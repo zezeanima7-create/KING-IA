@@ -26,7 +26,7 @@ async function chat(request,env){
   const messagesForModel=[{role:"system",content:SYSTEM+" "+MODES[mode]},...messages];
   try{
     const model=image?VISION:MODEL;
-    const result=image?await env.AI.run(VISION,{messages:messagesForModel,image:image}):await env.AI.run(MODEL,{messages:messagesForModel,max_tokens:1200,temperature:0.65});
+    const result=image?await env.AI.run(VISION,{messages:messagesForModel,image:image}):await env.AI.run(MODEL,{messages:messagesForModel,max_completion_tokens:800,temperature:0.65,reasoning_effort:"low",chat_template_kwargs:{enable_thinking:false}});
     const answer=textOf(result);
     if(!answer)return json({error:"O modelo retornou uma resposta vazia."},502);
     return json({answer:answer.slice(0,16000),model:model});
