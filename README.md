@@ -1,44 +1,51 @@
-# KING-IA
+# LOOPVERSE
 
-Assistente híbrido em português, hospedado em Cloudflare Workers.
+Plataforma mobile-first de entretenimento e comunidade, hospedada em Cloudflare Workers.
 
-## Recursos desta versão
-- Chat com GLM-4.7-Flash para texto, estudos e programação.
-- Análise de imagens com Llama 3.2 11B Vision.
-- Pesquisa na Wikipédia em português.
-- Modos Geral, Estudos, Código, Criativo e Direto.
-- Histórico local e exportação de conversas.
-- Interface instalável como PWA e arquivos básicos em cache.
-- KING Core local para cálculos aritméticos e algumas dicas simples.
-- Anexos PNG/JPG/WebP e arquivos TXT/MD/JSON/CSV.
+## O que existe nesta versão
 
-## Limites honestos
-A KING-IA ainda não possui um grande modelo treinado do zero. A geração de linguagem usa modelos hospedados pela Cloudflare; o KING Core offline é apenas um pequeno motor de regras e não substitui um LLM.
+- Página inicial com atalhos para as áreas principais.
+- Feed de publicações com filtros e pesquisa.
+- Criação de posts de ideias, dicas e jogos.
+- Perfil local com nome, XP, níveis e conquistas.
+- Quiz de conhecimentos gerais.
+- Minijogo de encontrar símbolos.
+- Ranking local e missão de publicação.
+- Layout responsivo para Android e desktop.
+- Armazenamento local no navegador.
 
-O Workers AI tem cota gratuita limitada. Segundo a documentação atual, o plano Free inclui 10.000 Neurons por dia. Ao atingir limites, chamadas podem falhar até a renovação diária. Não é uso ilimitado nem promessa de desempenho superior a todos os modelos comerciais.
+## Limites importantes
 
-A interface pode abrir offline depois de ser carregada, mas chat generativo, visão e pesquisa exigem internet. O histórico fica no armazenamento local do navegador, não é sincronizado e pode ser perdido ao limpar os dados do navegador.
+Esta é uma versão inicial funcional, sem backend de contas. Perfil, XP, publicações, curtidas e progresso ficam no armazenamento local do navegador e **não são sincronizados entre dispositivos nem compartilhados com outros visitantes**. Limpar os dados do navegador pode apagá-los.
 
-Não envie senhas, dados pessoais sensíveis ou documentos privados. Respostas de IA podem conter erros e devem ser verificadas.
+O ranking é local, não é um ranking global. Não há upload de imagens, mensagens privadas, moderação comunitária no servidor ou autenticação real nesta versão. Não use senhas nem dados pessoais no perfil.
 
 ## Arquivos
-- `worker.js`: interface, API de chat, pesquisa e PWA.
-- `wrangler.jsonc`: configuração e binding do Workers AI.
-- `training/README.md`: roteiro para treinamento futuro de um modelo próprio.
 
-## Deploy
-Com Node.js instalado e Wrangler autenticado na conta Cloudflare:
+- `worker.js`: aplicação web e rotas HTTP.
+- `wrangler.jsonc`: configuração Cloudflare Workers.
+- `package.json`: dependência Wrangler e comandos.
+
+## Publicar pelo Android
+
+1. Abra o repositório no GitHub.
+2. Confirme que o arquivo `worker.js` foi atualizado.
+3. No Cloudflare, abra Workers & Pages e selecione o Worker atualmente conectado a este repositório.
+4. Faça o deploy da versão atualizada.
+5. Abra o endereço `workers.dev` do Worker.
+
+Se o deploy estiver ligado ao GitHub, o commit na branch `main` poderá iniciar a publicação automaticamente, conforme a configuração de builds do projeto.
+
+## Desenvolvimento local
+
+Com Node.js e Wrangler:
 
 ```bash
 npm install
-npx wrangler deploy
+npm run dev
+npm run deploy
 ```
 
-O binding Workers AI se chama `AI`. Não coloque tokens, senhas ou chaves secretas no código, no frontend ou no GitHub.
+## Próximas etapas recomendadas
 
-## API
-- `GET /api/health`: estado do serviço.
-- `POST /api/chat`: conversa e análise de imagens.
-- `POST /api/search`: pesquisa na Wikipédia.
-
-MIT License.
+Para tornar a plataforma realmente social, será necessário adicionar backend de autenticação, banco de dados para perfis e publicações, armazenamento de mídia, regras de moderação e proteção contra spam. Esta versão não simula essas funções.
