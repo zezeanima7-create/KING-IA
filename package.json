@@ -1,8 +1,8 @@
 {
-  "name": "king-ia",
+  "name": "loopverse",
   "version": "1.0.0",
   "private": true,
-  "description": "Assistente híbrido gratuito KING-IA",
+  "description": "LOOPVERSE — plataforma mobile-first de entretenimento e comunidade",
   "scripts": {
     "dev": "wrangler dev",
     "deploy": "wrangler deploy"
