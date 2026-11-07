@@ -3,11 +3,29 @@
   "name": "king-ia",
   "main": "worker.js",
   "compatibility_date": "2026-11-07",
-  "ai": { "binding": "AI" },
+  "ai": {
+    "binding": "AI"
+  },
   "observability": {
     "enabled": true,
     "head_sampling_rate": 0.1,
-    "logs": { "enabled": true, "invocation_logs": true, "persist": true, "head_sampling_rate": 0.1 },
-    "traces": { "enabled": true, "persist": true, "head_sampling_rate": 0.1 }
-  }
+    "logs": {
+      "enabled": true,
+      "invocation_logs": true,
+      "persist": true,
+      "head_sampling_rate": 0.1
+    },
+    "traces": {
+      "enabled": true,
+      "persist": true,
+      "head_sampling_rate": 0.1
+    }
+  },
+  "d1_databases": [
+    {
+      "binding": "MEMORY",
+      "database_name": "king-ia-memory",
+      "database_id": "3742e072-26d8-47b7-82b3-af4916bd0af1"
+    }
+  ]
 }
