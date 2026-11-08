@@ -1,51 +1,47 @@
-# LOOPVERSE
+# KING FOOTBALL ARENA
 
-Plataforma mobile-first de entretenimento e comunidade, hospedada em Cloudflare Workers.
+Jogo de futebol 3D para navegador, construído no repositório KING-IA e publicado com Cloudflare Workers.
 
-## O que existe nesta versão
+## O que já funciona
 
-- Página inicial com atalhos para as áreas principais.
-- Feed de publicações com filtros e pesquisa.
-- Criação de posts de ideias, dicas e jogos.
-- Perfil local com nome, XP, níveis e conquistas.
-- Quiz de conhecimentos gerais.
-- Minijogo de encontrar símbolos.
-- Ranking local e missão de publicação.
-- Layout responsivo para Android e desktop.
-- Armazenamento local no navegador.
+- Partida rápida 4 contra 4: você controla o camisa 10 do KING FC contra o time Rival FC.
+- Estádio 3D, gramado com marcações, arquibancadas, gols e bola.
+- Jogadores 3D animados com modelo rigado, com alternativa procedural caso o modelo não carregue.
+- IA para companheiros, adversários e goleiros.
+- Movimento por teclado ou direcional touch.
+- Chute com força carregável, passe, corrida, placar e cronômetro.
+- Três dificuldades: Iniciante, Normal e Difícil.
+- Histórico local de vitórias, partidas e gols.
+- Interface adaptada a Android e desktop.
 
-## Limites importantes
+## Controles
 
-Esta é uma versão inicial funcional, sem backend de contas. Perfil, XP, publicações, curtidas e progresso ficam no armazenamento local do navegador e **não são sincronizados entre dispositivos nem compartilhados com outros visitantes**. Limpar os dados do navegador pode apagá-los.
+| Ação | Teclado | Celular |
+|---|---|---|
+| Mover | WASD ou setas | Direcional azul |
+| Chutar | Segurar Espaço | Segurar CHUTE |
+| Passar | E | PASSE |
+| Correr | Shift | Segurar CORRER |
+| Pausar | Botão PAUSAR | Botão PAUSAR |
 
-O ranking é local, não é um ranking global. Não há upload de imagens, mensagens privadas, moderação comunitária no servidor ou autenticação real nesta versão. Não use senhas nem dados pessoais no perfil.
+## Modelo 3D e licença
 
-## Arquivos
+O personagem rigado usado para os jogadores é o modelo **Animated Men**, de Quaternius. O arquivo foi copiado para `assets/player.glb` e é distribuído sob **CC0 1.0 Universal**. O arquivo de licença foi mantido em `assets/LICENSE-quaternius.txt`.
 
-- `worker.js`: aplicação web e rotas HTTP.
-- `wrangler.jsonc`: configuração Cloudflare Workers.
-- `package.json`: dependência Wrangler e comandos.
+O jogo usa Three.js por CDN e cria o estádio, o campo e a bola por geometria 3D no próprio código. O navegador precisa de internet na primeira carga para obter o Three.js.
 
-## Publicar pelo Android
+## Publicação pelo Android
 
-1. Abra o repositório no GitHub.
-2. Confirme que o arquivo `worker.js` foi atualizado.
-3. No Cloudflare, abra Workers & Pages e selecione o Worker atualmente conectado a este repositório.
-4. Faça o deploy da versão atualizada.
+1. Abra o repositório GitHub `zezeanima7-create/KING-IA`.
+2. Confira os arquivos `worker.js`, `assets/player.glb` e `assets/LICENSE-quaternius.txt`.
+3. No Cloudflare, abra **Workers & Pages** e selecione o Worker `king-ia`.
+4. Faça o deploy da branch `main`.
 5. Abra o endereço `workers.dev` do Worker.
 
-Se o deploy estiver ligado ao GitHub, o commit na branch `main` poderá iniciar a publicação automaticamente, conforme a configuração de builds do projeto.
+A rota `/api/health` informa o estado do Worker. O modelo do jogador é servido pela rota `/assets/player.glb`.
 
-## Desenvolvimento local
+## Observações
 
-Com Node.js e Wrangler:
-
-```bash
-npm install
-npm run dev
-npm run deploy
-```
-
-## Próximas etapas recomendadas
-
-Para tornar a plataforma realmente social, será necessário adicionar backend de autenticação, banco de dados para perfis e publicações, armazenamento de mídia, regras de moderação e proteção contra spam. Esta versão não simula essas funções.
+- O progresso do histórico é salvo no armazenamento local do navegador deste dispositivo.
+- Não há multiplayer online nem contas compartilhadas nesta versão.
+- O jogo foi pensado para rodar no Chrome/Chromium atualizado com WebGL habilitado.

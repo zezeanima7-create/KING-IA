@@ -1,8 +1,8 @@
 {
-  "name": "loopverse",
+  "name": "king-football-arena",
   "version": "1.0.0",
   "private": true,
-  "description": "LOOPVERSE — plataforma mobile-first de entretenimento e comunidade",
+  "description": "KING FOOTBALL ARENA — jogo 3D de futebol para navegador",
   "scripts": {
     "dev": "wrangler dev",
     "deploy": "wrangler deploy"
