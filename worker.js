@@ -1,4 +1,4 @@
-const PAGE = String.raw\`<!doctype html>
+const PAGE = String.raw`<!doctype html>
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
@@ -743,7 +743,7 @@ try{
 }
 </script>
 </body>
-</html>\`;
+</html>`;
 const JSON_HEADERS = {"content-type":"application/json; charset=utf-8","cache-control":"no-store","x-content-type-options":"nosniff"};
 const PLAYER_SOURCE = "https://raw.githubusercontent.com/zezeanima7-create/KING-IA/main/assets/player.glb";
 function json(data,status=200){return new Response(JSON.stringify(data),{status,headers:JSON_HEADERS});}
